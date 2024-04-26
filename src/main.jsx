@@ -10,6 +10,7 @@ import Home from './pages/Home/Home';
 import ArtsAndCrafts from './pages/ArtsAndCrafts/ArtsAndCrafts';
 import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
+import AddCraftItem from './pages/AddCraftItem/AddCraftItem';
 
 const router = createBrowserRouter([
   {
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
       {
         path: '/login',
         element: <Login></Login>
+      },
+      {
+        path: '/AddCraftItem',
+        element: <AddCraftItem></AddCraftItem>
       },
     ]
   },

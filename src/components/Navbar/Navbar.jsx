@@ -6,7 +6,7 @@ const Navbar = () => {
     const navLinks = <>
         <NavLink to={'/'}><li className="font-bold"><a>Home</a></li></NavLink>
         <NavLink to={'/ArtsAndCrafts'}><li className="font-bold"><a>All Arts&Crafts</a></li></NavLink>
-        <NavLink><li className="font-bold"><a>Add Craft Item</a></li></NavLink>
+        <NavLink to={'/AddCraftItem'}><li className="font-bold"><a>Add Craft Item</a></li></NavLink>
         <NavLink><li className="font-bold"><a>My Art&Craft List</a></li></NavLink>
     </> 
 

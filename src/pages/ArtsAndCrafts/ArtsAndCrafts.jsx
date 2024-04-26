@@ -1,7 +1,7 @@
 const ArtsAndCrafts = () => {
     return (
         <div>
-            dgdfgdfg
+            
         </div>
     );
 };
