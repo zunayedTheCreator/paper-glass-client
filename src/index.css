@@ -15,4 +15,28 @@
     font-optical-sizing: auto;
     font-style: normal;
   }
+
+  .loginBg{
+    background-image: url(/public/images/login_bg.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    opacity: 0.8;
+}
+
+.blurBg{
+    backdrop-filter: blur(10px);
+    background-color: transparent;
+    
+}
+
+.placeholder::placeholder {
+    color: white;
+}
+.placeholder-b::placeholder {
+    color: black;
+}
+
+input:focus {
+    outline: none;
+}
   

@@ -36,7 +36,7 @@ const Navbar = () => {
                     </label>
                 </ul>
                 </div>
-                <a className="btn hover:bg-slate-50 bg-transparent border-none text-xl">Paper Glass</a>
+                <a className="btn hover:bg-slate-50 bg-transparent border-none text-xl"><NavLink to={'/'}>Paper Glass</NavLink></a>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
@@ -49,8 +49,8 @@ const Navbar = () => {
                         <img src={no_user} alt="Tailwind-CSS-Avatar-component" />
                     </div>
                 </div>
-                <a className="btn bg-amber-500 rounded-l rounded-r-none px-6 font-bold text-white border-none">Login</a>
-                <a className="btn bg-teal-400 rounded-r rounded-l-none px-6 font-bold text-white border-none">Register</a>
+                <NavLink to={'/login'}><a className="btn bg-amber-500 rounded-l rounded-r-none px-6 font-bold text-white border-none">Login</a></NavLink>
+                <NavLink to={'/register'}><a className="btn bg-teal-400 rounded-r rounded-l-none px-6 font-bold text-white border-none">Register</a></NavLink>
                 <label className="swap swap-rotate ml-2 hidden lg:grid">
   
                     {/* this hidden checkbox controls the state */}
