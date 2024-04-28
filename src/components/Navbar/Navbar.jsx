@@ -16,10 +16,34 @@ const Navbar = () => {
     const signedPhoto = user2?.img
 
     const navLinks = <>
-        <NavLink to={'/'}><li className="font-bold"><a>Home</a></li></NavLink>
-        <NavLink to={'/ArtsAndCrafts'}><li className="font-bold"><a>All Arts&Crafts</a></li></NavLink>
-        { user1 || user2 ? <NavLink to={'/AddCraftItem'}><li className="font-bold"><a>Add Craft Item</a></li></NavLink> : <></>}
-        { user1 || user2 ? <NavLink><li className="font-bold"><a>My Art&Craft List</a></li></NavLink> : <></>}
+        <NavLink to={'/'} className={({ isActive, isPending }) =>
+                      isActive
+                        ? "rounded-xl bg-emerald-400 text-black"
+                        : isPending
+                        ? "pending"
+                        : ""
+                    }><li className="font-bold"><a>Home</a></li></NavLink>
+        <NavLink to={'/ArtsAndCrafts'} className={({ isActive, isPending }) =>
+                      isActive
+                        ? "rounded-xl bg-emerald-400 text-black"
+                        : isPending
+                        ? "pending"
+                        : ""
+                    }><li className="font-bold"><a>All Arts&Crafts</a></li></NavLink>
+        { user1 || user2 ? <NavLink to={'/AddCraftItem'} className={({ isActive, isPending }) =>
+                      isActive
+                        ? "rounded-xl bg-emerald-400 text-black"
+                        : isPending
+                        ? "pending"
+                        : ""
+                    }><li className="font-bold"><a>Add Craft Item</a></li></NavLink> : <></>}
+        { user1 || user2 ? <NavLink className={({ isActive, isPending }) =>
+                      isActive
+                        ? "rounded-xl bg-emerald-400 text-black"
+                        : isPending
+                        ? "pending"
+                        : ""
+                    }><li className="font-bold"><a>My Art&Craft List</a></li></NavLink> : <></>}
     </> 
 
     const handleSignOut = () => {
