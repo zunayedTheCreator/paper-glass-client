@@ -1,21 +1,63 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { FaEye, FaEyeSlash, FaGithub, FaGoogle } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
+import { AuthContext } from "../../providers/AuthProvider";
+import { GoogleAuthProvider } from "firebase/auth";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
 
     const [isToggled, setIsToggled] = useState(false);
 
+    const { signInUser, googleSignIn } = useContext(AuthContext)
+
     const handleToggleClick = () => {
         setIsToggled(!isToggled);
     };
+
+    const handleSignIn = e => {
+        e.preventDefault();
+
+        const form = e.target;
+        const email = form.email.value;
+        const password = form.password.value;
+
+        signInUser(email, password)
+        .then((result) => {
+            console.log(result.user);
+        })
+        .catch((error) => {
+            console.error(error);
+        })
+    } 
+
+    const provider = new GoogleAuthProvider();
+
+    const handleGoogleLogin = () => {
+
+        googleSignIn(provider)
+        .then((result) => {
+            if (result.user) {
+                const loggedUser = JSON.stringify(result.user)
+                localStorage.setItem('loggedUser', loggedUser)
+                toast.success('Successfully Logged In')
+                setTimeout(() => { 
+                    location.reload()
+                }, 2000);
+            }
+        })
+        .catch((error) => {
+            console.error(error);
+        })
+    }
 
     return (
         <div className='loginBg h-[790px] md:h-[600px] rounded-3xl mb-16 mt-8'>
            <div className='flex flex-col md:flex-row items-center justify-between'>
                 <div className='md:w-2/3 mt-5 md:mt-0 mb-6 md:mb-0'>
                     <div>
-                        <form className="blurBg w-[340px] h-[450px] border-[#00000066] border-2 mx-auto rounded-3xl py-4 px-3 animate__animated animate__fadeInLeft">
+                        <form onSubmit={handleSignIn} className="blurBg w-[340px] h-[450px] border-[#00000066] border-2 mx-auto rounded-3xl py-4 px-3 animate__animated animate__fadeInLeft">
                             <h3 className="text-black text-4xl font-bold text-center">Login</h3>
                             <div className="border-t-2 border-black mx-auto w-1/2 mt-2 mb-[40px]"></div>
                             <input type="email" placeholder="Your Email" name="email" className="input-md w-full max-w-xs blurBg border-2 border-white text-white font-medium rounded-2xl placeholder-b mb-6" required/>
@@ -25,7 +67,7 @@ const Login = () => {
                             </div>
                             <div className="border-t-2 border-white mx-auto w-2/3 mt-2 mb-4"></div>
                             <div className="mb-4 flex items-center gap-3 justify-center">
-                                <FaGoogle  className="text-[50px] py-2 w-[80px] rounded-lg border-2 hover:bg-white hover:text-black text-white duration-200 cursor-pointer"></FaGoogle>
+                                <FaGoogle onClick={handleGoogleLogin} className="text-[50px] py-2 w-[80px] rounded-lg border-2 hover:bg-white hover:text-black text-white duration-200 cursor-pointer"></FaGoogle>
                                 <FaGithub className="text-[50px] py-2 w-[80px] rounded-lg border-2 hover:bg-white hover:text-black text-white duration-200 cursor-pointer"></FaGithub>
                             </div>
                             <div className="border-t-2 border-white mx-auto w-2/3 mt-2 mb-[20px]"></div>
@@ -44,6 +86,7 @@ const Login = () => {
                     </div>
                 </div>
            </div>
+           <ToastContainer></ToastContainer>
         </div>
     );
 };

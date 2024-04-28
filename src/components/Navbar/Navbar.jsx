@@ -1,14 +1,29 @@
 import { NavLink } from "react-router-dom";
 import no_user from "../../../public/images/user.jpg"
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Navbar = () => {
+
+    const loggedUser = localStorage.getItem('loggedUser')
+    const user1 = JSON.parse(loggedUser);
+    const loggedName = user1?.providerData[0].displayName
+    const loggedPhoto = user1?.providerData[0].photoURL
 
     const navLinks = <>
         <NavLink to={'/'}><li className="font-bold"><a>Home</a></li></NavLink>
         <NavLink to={'/ArtsAndCrafts'}><li className="font-bold"><a>All Arts&Crafts</a></li></NavLink>
-        <NavLink to={'/AddCraftItem'}><li className="font-bold"><a>Add Craft Item</a></li></NavLink>
-        <NavLink><li className="font-bold"><a>My Art&Craft List</a></li></NavLink>
+        { user1? <NavLink to={'/AddCraftItem'}><li className="font-bold"><a>Add Craft Item</a></li></NavLink> : <></>}
+        { user1? <NavLink><li className="font-bold"><a>My Art&Craft List</a></li></NavLink> : <></>}
     </> 
+
+    const handleSignOut = () => {
+        localStorage.removeItem('loggedUser')
+        toast.success('Successfully Logged Out')
+        setTimeout(() => { 
+            location.reload()
+        }, 2000);
+    }
 
     return (
         <div className="navbar bg-base-100 mb-8">
@@ -46,11 +61,15 @@ const Navbar = () => {
             <div className="navbar-end">
                 <div className="avatar">
                     <div className="w-11 rounded-full mr-3 ring ring-offset-2 ring-teal-400 ml-4">
-                        <img src={no_user} alt="Tailwind-CSS-Avatar-component" />
+                        <img src={user1? loggedPhoto : no_user} alt={user1? loggedName : 'None'} />
                     </div>
                 </div>
-                <NavLink to={'/login'}><a className="btn bg-amber-500 rounded-l rounded-r-none px-6 font-bold text-white border-none">Login</a></NavLink>
-                <NavLink to={'/register'}><a className="btn bg-teal-400 rounded-r rounded-l-none px-6 font-bold text-white border-none">Register</a></NavLink>
+                { user1? 
+                    <button onClick={handleSignOut} className="text-white bg-red-600 rounded btn font-bold">SignOut</button> : <div>
+                        <NavLink to={'/login'}><a className="btn bg-amber-500 rounded-l rounded-r-none px-6 font-bold text-white border-none">Login</a></NavLink>
+                        <NavLink to={'/register'}><a className="btn bg-teal-400 rounded-r rounded-l-none px-6 font-bold text-white border-none">Register</a></NavLink>
+                    </div>
+                }
                 <label className="swap swap-rotate ml-2 hidden lg:grid">
   
                     {/* this hidden checkbox controls the state */}
@@ -64,6 +83,7 @@ const Navbar = () => {
                 
                 </label>
             </div>
+            <ToastContainer></ToastContainer>
         </div>
     );
 };
