@@ -12,11 +12,13 @@ import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
 import AddCraftItem from './pages/AddCraftItem/AddCraftItem';
 import ItemDetails from './pages/ItemDetails/ItemDetails';
+import Error from './pages/Home/Error/Error';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
+    errorElement: <Error></Error>,
     children: [
       {
         path: '/',
