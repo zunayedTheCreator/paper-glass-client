@@ -91,7 +91,7 @@ const AddCraftItem = () => {
                 {/* ------------------------- */}
                 <div className="px-24 pb-6 md:flex md:justify-between gap-5">
                     <input required type="text" name="user_name" placeholder="User Name" className="input input-bordered md:w-1/2" />
-                    <input required type="text" name="user_email" placeholder="User Email" className="input input-bordered md:w-1/2" />
+                    <input required type="email" name="user_email" placeholder="User Email" className="input input-bordered md:w-1/2" />
                 </div>
 
                 {/* ------------------------- */}

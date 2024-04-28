@@ -11,6 +11,7 @@ import ArtsAndCrafts from './pages/ArtsAndCrafts/ArtsAndCrafts';
 import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
 import AddCraftItem from './pages/AddCraftItem/AddCraftItem';
+import ItemDetails from './pages/ItemDetails/ItemDetails';
 
 const router = createBrowserRouter([
   {
@@ -24,7 +25,8 @@ const router = createBrowserRouter([
       },
       {
         path: '/ArtsAndCrafts',
-        element: <ArtsAndCrafts></ArtsAndCrafts>
+        element: <ArtsAndCrafts></ArtsAndCrafts>,
+        loader: () => fetch('http://localhost:5000/item')
       },
       {
         path: '/register',
@@ -37,6 +39,11 @@ const router = createBrowserRouter([
       {
         path: '/AddCraftItem',
         element: <AddCraftItem></AddCraftItem>
+      },
+      {
+        path: '/item/:id',
+        element: <ItemDetails></ItemDetails>,
+        loader: ({params}) => fetch(`http://localhost:5000/item/${params.id}`)
       },
     ]
   },
