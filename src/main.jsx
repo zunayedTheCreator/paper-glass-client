@@ -14,6 +14,7 @@ import AddCraftItem from './pages/AddCraftItem/AddCraftItem';
 import ItemDetails from './pages/ItemDetails/ItemDetails';
 import Error from './pages/Home/Error/Error';
 import AuthProvider from './providers/AuthProvider';
+import PrivateRoutes from './routes/PrivateRoutes';
 
 const router = createBrowserRouter([
   {
@@ -41,11 +42,11 @@ const router = createBrowserRouter([
       },
       {
         path: '/AddCraftItem',
-        element: <AddCraftItem></AddCraftItem>
+        element: <PrivateRoutes><AddCraftItem></AddCraftItem></PrivateRoutes>
       },
       {
         path: '/item/:id',
-        element: <ItemDetails></ItemDetails>,
+        element: <PrivateRoutes><ItemDetails></ItemDetails></PrivateRoutes>,
         loader: ({params}) => fetch(`http://localhost:5000/item/${params.id}`)
       },
     ]
