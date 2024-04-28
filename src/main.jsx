@@ -13,6 +13,7 @@ import Register from './pages/Register/Register';
 import AddCraftItem from './pages/AddCraftItem/AddCraftItem';
 import ItemDetails from './pages/ItemDetails/ItemDetails';
 import Error from './pages/Home/Error/Error';
+import AuthProvider from './providers/AuthProvider';
 
 const router = createBrowserRouter([
   {
@@ -53,6 +54,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </React.StrictMode>,
 )

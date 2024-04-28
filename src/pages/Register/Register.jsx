@@ -1,21 +1,59 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { FaEye, FaEyeSlash, FaGithub, FaGoogle } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
+import { AuthContext } from "../../providers/AuthProvider";
+import { ToastContainer, toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
 
 const Register = () => {
     const [isToggled, setIsToggled] = useState(false);
+
+    const {createUser} = useContext(AuthContext)
 
     const handleToggleClick = () => {
         setIsToggled(!isToggled);
     };
 
+    const handleCreateUser = e =>{
+        e.preventDefault();
+
+        const form = e.target;
+
+        const name = form.name.value;
+        const email = form.email.value;
+        const img = form.img.value;
+        const password = form.password.value;
+        console.log(name, email, img, password);
+        createUser(email, password)
+        .then(result => {
+            console.log(result.user);
+
+            const user = {name, email, img, password};
+            fetch('http://localhost:5000/user', {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(user)
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.insertedId) {
+                    toast.success('Registration successful')
+                }
+            })
+        })
+        .catch(error => {
+            console.error(error);
+        })
+    }
 
     return (
         <div className='loginBg h-[790px] md:h-[600px] rounded-3xl mb-16 mt-8'>
            <div className='flex flex-col md:flex-row items-center justify-between'>
            <div className='md:w-2/3 mt-5 md:mt-0 mb-6 md:mb-0'>
                     <div>
-                        <form className="blurBg w-[340px] h-[450px] border-[#00000066] border-2 mx-auto rounded-3xl py-4 px-3 animate__animated animate__fadeInLeft">
+                        <form onSubmit={handleCreateUser} className="blurBg w-[340px] h-[450px] border-[#00000066] border-2 mx-auto rounded-3xl py-4 px-3 animate__animated animate__fadeInLeft">
                             <h3 className="text-[#000000] text-4xl font-bold text-center">Register</h3>
                             <div className="border-t-2 border-black mx-auto w-1/2 mt-2 mb-[20px]"></div>
                             <input type="text" placeholder="Your Name" name="name" className="input-md w-full max-w-xs blurBg border-2 border-white text-white font-medium rounded-2xl placeholder-b mb-4" required/>
@@ -40,6 +78,7 @@ const Register = () => {
                     </div>
                 </div>
            </div>
+           <ToastContainer />
         </div>
     );
 };
