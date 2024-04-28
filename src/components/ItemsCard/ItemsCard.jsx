@@ -8,9 +8,9 @@ const ItemsCard = ({item}) => {
     const {item_name, subcategory, price, rating, process_time, description, customization, stock_state, user_name, user_email, photo, _id} = item;
 
     return (
-        <div className="card card-side bg-base-100 w-[600px] h-[320px] shadow-xl rounded border text-black item mx-auto xl:mx-0">
-        <figure className="w-2/5 bg-black"><img src={photo} alt="Movie"/></figure>
-        <div className="card-body gap-0 w-3/5 bg-orange-300">
+        <div className="card md:card-side bg-base-100 w-[330px] md:w-[600px] md:h-[320px] shadow-xl rounded border text-black item mx-auto xl:mx-0">
+        <figure className="md:w-2/5 bg-black"><img src={photo} alt="Movie"/></figure>
+        <div className="card-body gap-0 md:w-3/5 bg-orange-300">
             <div className="flex items-center justify-between">
                 <h2 className="card-title font-bold mb-1">{item_name}</h2>
                 <Link to={`/item/${_id}`}><button className=" font-bold border-2 border-teal-700 px-2 rounded hover:bg-teal-400 hover:text-white duration-200">View</button></Link>

@@ -3,8 +3,16 @@ import 'sweetalert2/src/sweetalert2.scss'
 
 const AddCraftItem = () => {
 
+    const loggedUser = localStorage.getItem('loggedUser');
+    const user1 = JSON.parse(loggedUser)
+    const email1 = user1?.providerData[0].email;
+    const signedUser = localStorage.getItem('signedUser');
+    const user2 = JSON.parse(signedUser)
+    const email2 = user2?.email;
+
     const handleAddItem = e => {
         e.preventDefault();
+
 
         const form = e.target;
 
@@ -46,12 +54,12 @@ const AddCraftItem = () => {
     }
 
     return (
-        <div className="bg-[#fff2ca]">
-            <h1 className="pl-24 pt-24 text-4xl font-bold">Add a Craft Item</h1>
+        <div className="bg-[#fff2ca] pt-10">
+            <h1 className="pl-4 md:pl-24 text-4xl font-bold">Add a Craft Item</h1>
             <form onSubmit={handleAddItem}>
-                <div className="pt-6 px-24 pb-6 md:flex md:justify-between gap-5">
-                    <input required type="text" name="item_name" placeholder="Item Name" className="input input-bordered md:w-1/2" />
-                    <select required name="subcategory" className="select select-bordered md:w-1/2">
+                <div className="pt-6 px-4 md:px-24 pb-6 flex flex-col md:flex-row md:justify-between gap-5">
+                    <input required type="text" name="item_name" placeholder="Item Name" className="input input-bordered w-full md:w-1/2" />
+                    <select required name="subcategory" className="select select-bordered w-full md:w-1/2">
                         <option>No Subcategory</option>
                         <option>Card Making</option>
                         <option>Scrapbooking</option>
@@ -63,19 +71,19 @@ const AddCraftItem = () => {
                 </div>
 
                 {/* ------------------------- */}
-                <div className="px-24 pb-6 md:flex md:justify-between gap-5">
-                    <input required type="text" name="price" placeholder="Price" className="input input-bordered md:w-1/2" />
-                    <input required type="text" name="rating" placeholder="Rating" className="input input-bordered md:w-1/2" />
+                <div className="px-4 md:px-24 pb-6 flex flex-col md:flex-row md:justify-between gap-5">
+                    <input required type="text" name="price" placeholder="Price" className="input input-bordered w-full md:w-1/2" />
+                    <input required type="text" name="rating" placeholder="Rating" className="input input-bordered w-full md:w-1/2" />
                 </div>
 
                 {/* ------------------------- */}
-                <div className="px-24 pb-6 md:flex md:justify-between gap-5">
-                    <input required type="text" name="process_time" placeholder="Processing Time" className="input input-bordered md:w-1/2" />
-                    <input required type="text" name="description" placeholder="Short description" className="input input-bordered md:w-1/2" />
+                <div className="px-4 md:px-24 pb-6 flex flex-col md:flex-row md:justify-between gap-5">
+                    <input required type="text" name="process_time" placeholder="Processing Time" className="input input-bordered w-full md:w-1/2" />
+                    <input required type="text" name="description" placeholder="Short description" className="input input-bordered w-full md:w-1/2" />
                 </div>
 
                 {/* ------------------------- */}
-                <div className="px-24 pb-6 md:flex md:justify-between gap-5">
+                <div className="px-4 md:px-24 pb-6 flex flex-col md:flex-row md:justify-between gap-5">
                     <select required name="customization" className="select select-bordered w-full">
                         <option disabled >Customization</option>
                         <option>Yes</option>
@@ -89,16 +97,16 @@ const AddCraftItem = () => {
                 </div>
 
                 {/* ------------------------- */}
-                <div className="px-24 pb-6 md:flex md:justify-between gap-5">
-                    <input required type="text" name="user_name" placeholder="User Name" className="input input-bordered md:w-1/2" />
-                    <input required type="email" name="user_email" placeholder="User Email" className="input input-bordered md:w-1/2" />
+                <div className="px-4 md:px-24 pb-6 flex flex-col md:flex-row md:justify-between gap-5">
+                    <input required type="text" name="user_name" placeholder="User Name" className="input input-bordered w-full md:w-1/2" />
+                    <input readOnly defaultValue={email1 || email2} type="email" name="user_email" placeholder={"User Email"} className="input input-bordered w-full md:w-1/2" />
                 </div>
 
                 {/* ------------------------- */}
-                <div className="pb-5 px-24">
+                <div className="pb-5 px-4 md:px-24">
                     <input required type="text" name="photo" placeholder="Photo URL" className="input input-bordered w-full" />
                 </div>
-                <div className="pb-24 px-24">
+                <div className="pb-24 px-4 md:px-24">
                     <button className="btn w-full bg-[#e6b472] font-bold">Add</button>
                 </div>
             </form>

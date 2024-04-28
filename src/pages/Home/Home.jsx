@@ -1,6 +1,8 @@
 import { useLoaderData } from "react-router-dom";
 import Banner from "../../components/Banner/Banner";
 import ItemsCard from "../../components/ItemsCard/ItemsCard";
+import MostValue from "../../components/MostValue/MostValue";
+import MostUnique from "../../components/MostUnique/MostUnique";
 
 const Home = () => {
 
@@ -18,6 +20,8 @@ const Home = () => {
                     }
                 </div>
             </div>
+            <MostValue></MostValue>
+            <MostUnique></MostUnique>
         </div>
     );
 };

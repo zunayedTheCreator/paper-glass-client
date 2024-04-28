@@ -67,7 +67,7 @@ const Navbar = () => {
             <div className="navbar-end">
                 <div className="avatar">
                     <div className="w-11 rounded-full mr-3 ring ring-offset-2 ring-teal-400 ml-4">
-                        <img src={ user1 || user2 ? loggedPhoto || signedPhoto : no_user } alt={loggedName || signedName} />
+                        <img src={ user1 || user2 ? loggedPhoto || signedPhoto : no_user } alt={user1 || user2 ? loggedName || signedName : 'None'} />
                     </div>
                 </div>
                 { user1 || user2 ? 
