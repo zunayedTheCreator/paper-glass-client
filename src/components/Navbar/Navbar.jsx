@@ -9,16 +9,22 @@ const Navbar = () => {
     const user1 = JSON.parse(loggedUser);
     const loggedName = user1?.providerData[0].displayName
     const loggedPhoto = user1?.providerData[0].photoURL
+    
+    const signedUser = localStorage.getItem('signedUser')
+    const user2 = JSON.parse(signedUser)
+    const signedName = user2?.name
+    const signedPhoto = user2?.img
 
     const navLinks = <>
         <NavLink to={'/'}><li className="font-bold"><a>Home</a></li></NavLink>
         <NavLink to={'/ArtsAndCrafts'}><li className="font-bold"><a>All Arts&Crafts</a></li></NavLink>
-        { user1? <NavLink to={'/AddCraftItem'}><li className="font-bold"><a>Add Craft Item</a></li></NavLink> : <></>}
-        { user1? <NavLink><li className="font-bold"><a>My Art&Craft List</a></li></NavLink> : <></>}
+        { user1 || user2 ? <NavLink to={'/AddCraftItem'}><li className="font-bold"><a>Add Craft Item</a></li></NavLink> : <></>}
+        { user1 || user2 ? <NavLink><li className="font-bold"><a>My Art&Craft List</a></li></NavLink> : <></>}
     </> 
 
     const handleSignOut = () => {
         localStorage.removeItem('loggedUser')
+        localStorage.removeItem('signedUser')
         toast.success('Successfully Logged Out')
         setTimeout(() => { 
             location.reload()
@@ -61,10 +67,10 @@ const Navbar = () => {
             <div className="navbar-end">
                 <div className="avatar">
                     <div className="w-11 rounded-full mr-3 ring ring-offset-2 ring-teal-400 ml-4">
-                        <img src={user1? loggedPhoto : no_user} alt={user1? loggedName : 'None'} />
+                        <img src={ user1 || user2 ? loggedPhoto || signedPhoto : no_user } alt={loggedName || signedName} />
                     </div>
                 </div>
-                { user1? 
+                { user1 || user2 ? 
                     <button onClick={handleSignOut} className="text-white bg-red-600 rounded btn font-bold">SignOut</button> : <div>
                         <NavLink to={'/login'}><a className="btn bg-amber-500 rounded-l rounded-r-none px-6 font-bold text-white border-none">Login</a></NavLink>
                         <NavLink to={'/register'}><a className="btn bg-teal-400 rounded-r rounded-l-none px-6 font-bold text-white border-none">Register</a></NavLink>

@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { FaEye, FaEyeSlash, FaGithub, FaGoogle } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
-import { GoogleAuthProvider } from "firebase/auth";
+import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -10,7 +10,7 @@ const Login = () => {
 
     const [isToggled, setIsToggled] = useState(false);
 
-    const { signInUser, googleSignIn } = useContext(AuthContext)
+    const { signInUser, googleSignIn, gitSignIn } = useContext(AuthContext)
 
     const handleToggleClick = () => {
         setIsToggled(!isToggled);
@@ -26,17 +26,30 @@ const Login = () => {
         signInUser(email, password)
         .then((result) => {
             console.log(result.user);
+
+            fetch(`http://localhost:5000/user/${email}`)
+            .then(res => res.json())
+            .then(data => {
+                console.log(data[0]);
+                const signedUser = JSON.stringify(data[0])
+                localStorage.setItem('signedUser', signedUser)
+                toast.success('Successfully Logged In')
+                setTimeout(() => { 
+                    location.reload()
+                }, 2000);
+            })
         })
         .catch((error) => {
             console.error(error);
+            toast.error(error)
         })
     } 
 
-    const provider = new GoogleAuthProvider();
+    const googleProvider = new GoogleAuthProvider();
 
     const handleGoogleLogin = () => {
 
-        googleSignIn(provider)
+        googleSignIn(googleProvider)
         .then((result) => {
             if (result.user) {
                 const loggedUser = JSON.stringify(result.user)
@@ -49,6 +62,28 @@ const Login = () => {
         })
         .catch((error) => {
             console.error(error);
+            toast.error(error)
+        })
+    }
+    
+    const gitProvider = new GithubAuthProvider();
+    
+    const handleGitLogin = () => {
+
+        gitSignIn(gitProvider)
+        .then((result) => {
+            if (result.user) {
+                const loggedUser = JSON.stringify(result.user)
+                localStorage.setItem('loggedUser', loggedUser)
+                toast.success('Successfully Logged In')
+                setTimeout(() => { 
+                    location.reload()
+                }, 2000);
+            }
+        })
+        .catch((error) => {
+            console.error(error);
+            toast.error(error)
         })
     }
 
@@ -68,7 +103,7 @@ const Login = () => {
                             <div className="border-t-2 border-white mx-auto w-2/3 mt-2 mb-4"></div>
                             <div className="mb-4 flex items-center gap-3 justify-center">
                                 <FaGoogle onClick={handleGoogleLogin} className="text-[50px] py-2 w-[80px] rounded-lg border-2 hover:bg-white hover:text-black text-white duration-200 cursor-pointer"></FaGoogle>
-                                <FaGithub className="text-[50px] py-2 w-[80px] rounded-lg border-2 hover:bg-white hover:text-black text-white duration-200 cursor-pointer"></FaGithub>
+                                <FaGithub onClick={handleGitLogin} className="text-[50px] py-2 w-[80px] rounded-lg border-2 hover:bg-white hover:text-black text-white duration-200 cursor-pointer"></FaGithub>
                             </div>
                             <div className="border-t-2 border-white mx-auto w-2/3 mt-2 mb-[20px]"></div>
                             <div className="text-center">
