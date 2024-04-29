@@ -17,6 +17,13 @@ import AuthProvider from './providers/AuthProvider';
 import PrivateRoutes from './routes/PrivateRoutes';
 import MyArtsAndCrafts from './pages/MyArtsAndCrafts/MyArtsAndCrafts';
 
+const loggedUser = localStorage.getItem('loggedUser');
+const user1 = JSON.parse(loggedUser)
+const email1 = user1?.providerData[0].email;
+const signedUser = localStorage.getItem('signedUser');
+const user2 = JSON.parse(signedUser)
+const email2 = user2?.email;
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -53,7 +60,7 @@ const router = createBrowserRouter([
       {
         path: '/MyArtsAndCrafts',
         element: <PrivateRoutes><MyArtsAndCrafts></MyArtsAndCrafts></PrivateRoutes>,
-      },
+        loader: () => fetch(`http://localhost:5000/item/${email1||email2}`)      },
     ]
   },
 ]);
