@@ -46,7 +46,7 @@ const MyItemCard = ({item, items, setItems}) => {
                 <div className="flex items-center mb-4 justify-between">
                     <button className="font-bold border-2 border-b-black border-r-black border-l-teal-400 border-t-teal-400 px-2 py-1 rounded w-fit bg-[#ffffff66] hover:bg-[#ffffff55] hover:border-b-teal-400 hover:border-r-teal-400 hover:border-l-black hover:border-t-black duration-200">{subcategory}</button>
                     <div className="flex items-center gap-2">
-                        <Link><FaPen className="text-4xl bg-green-400 p-2 rounded-md hover:bg-green-300 duration-200"></FaPen></Link>
+                        <Link to={`/UpdateCraftItem/${_id}`}><FaPen className="text-4xl bg-green-400 p-2 rounded-md hover:bg-green-300 duration-200"></FaPen></Link>
                         <FaRegTrashAlt onClick={() => handleDelete(_id)} className="text-4xl bg-red-500 p-2 rounded-md hover:bg-red-400 duration-200 cursor-pointer"></FaRegTrashAlt>
                     </div>
                 </div>

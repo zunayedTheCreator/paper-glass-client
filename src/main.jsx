@@ -16,6 +16,7 @@ import Error from './pages/Home/Error/Error';
 import AuthProvider from './providers/AuthProvider';
 import PrivateRoutes from './routes/PrivateRoutes';
 import MyArtsAndCrafts from './pages/MyArtsAndCrafts/MyArtsAndCrafts';
+import UpdateCraftItem from './pages/UpdateCraftItem/UpdateCraftItem';
 
 const loggedUser = localStorage.getItem('loggedUser');
 const user1 = JSON.parse(loggedUser)
@@ -60,7 +61,13 @@ const router = createBrowserRouter([
       {
         path: '/MyArtsAndCrafts',
         element: <PrivateRoutes><MyArtsAndCrafts></MyArtsAndCrafts></PrivateRoutes>,
-        loader: () => fetch(`http://localhost:5000/item/${email1||email2}`)      },
+        loader: () => fetch(`http://localhost:5000/item/${email1||email2}`)
+      },
+      {
+        path: '/UpdateCraftItem/:id',
+        element: <PrivateRoutes><UpdateCraftItem></UpdateCraftItem></PrivateRoutes>,
+        loader: ({params}) => fetch(`http://localhost:5000/item/${params.id}`)
+      },
     ]
   },
 ]);

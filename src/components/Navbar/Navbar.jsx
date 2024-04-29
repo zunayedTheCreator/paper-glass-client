@@ -81,7 +81,7 @@ const Navbar = () => {
                     </label>
                 </ul>
                 </div>
-                <a className="btn hover:bg-slate-50 bg-transparent border-none text-xl"><NavLink to={'/'}>Paper Glass</NavLink></a>
+                <a className="btn hover:bg-slate-50 bg-transparent border-none text-xl"><NavLink to={'/'}>Paper&Glass</NavLink></a>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
