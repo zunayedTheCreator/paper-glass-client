@@ -37,7 +37,7 @@ const Navbar = () => {
                         ? "pending"
                         : ""
                     }><li className="font-bold"><a>Add Craft Item</a></li></NavLink> : <></>}
-        { user1 || user2 ? <NavLink className={({ isActive, isPending }) =>
+        { user1 || user2 ? <NavLink to={'/MyArtsAndCrafts'} className={({ isActive, isPending }) =>
                       isActive
                         ? "rounded-xl bg-emerald-400 text-black"
                         : isPending

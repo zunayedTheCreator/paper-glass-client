@@ -15,6 +15,7 @@ import ItemDetails from './pages/ItemDetails/ItemDetails';
 import Error from './pages/Home/Error/Error';
 import AuthProvider from './providers/AuthProvider';
 import PrivateRoutes from './routes/PrivateRoutes';
+import MyArtsAndCrafts from './pages/MyArtsAndCrafts/MyArtsAndCrafts';
 
 const router = createBrowserRouter([
   {
@@ -48,6 +49,10 @@ const router = createBrowserRouter([
         path: '/item/:id',
         element: <PrivateRoutes><ItemDetails></ItemDetails></PrivateRoutes>,
         loader: ({params}) => fetch(`http://localhost:5000/item/${params.id}`)
+      },
+      {
+        path: '/MyArtsAndCrafts',
+        element: <PrivateRoutes><MyArtsAndCrafts></MyArtsAndCrafts></PrivateRoutes>,
       },
     ]
   },
