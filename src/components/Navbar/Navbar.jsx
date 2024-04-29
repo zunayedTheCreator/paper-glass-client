@@ -1,7 +1,9 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import no_user from "../../../public/images/user.jpg"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+
+import logo from '../../../public/images/logo.png'
 
 const Navbar = () => {
 
@@ -56,7 +58,7 @@ const Navbar = () => {
     }
 
     return (
-        <div className="navbar bg-base-100 mb-8">
+        <div className="navbar bg-base-100 mb-8 px-6">
             <div className="navbar-start">
                 <div className="dropdown">
                 <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -81,7 +83,10 @@ const Navbar = () => {
                     </label>
                 </ul>
                 </div>
-                <a className="btn hover:bg-slate-50 bg-transparent border-none text-xl"><NavLink to={'/'}>Paper&Glass</NavLink></a>
+                <div className="flex items-center gap-3">
+                    <Link to={'/'}><img className="w-[50px]" src={logo} alt="logo" /></Link>
+                    <a className="btn hidden md:flex hover:bg-slate-50 bg-transparent border-none text-xl"><NavLink to={'/'}>Paper&Glass</NavLink></a>
+                </div>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">

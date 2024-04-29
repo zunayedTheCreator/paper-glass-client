@@ -1,8 +1,9 @@
 import Swal from 'sweetalert2/dist/sweetalert2.js'
 import 'sweetalert2/src/sweetalert2.scss'
+import MyDynamicTitle from '../../../MyDynamicTitle';
 
 const AddCraftItem = () => {
-
+    MyDynamicTitle('Add Craft Item')
     const loggedUser = localStorage.getItem('loggedUser');
     const user1 = JSON.parse(loggedUser)
     const email1 = user1?.providerData[0].email;

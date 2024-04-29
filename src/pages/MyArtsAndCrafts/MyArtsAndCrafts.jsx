@@ -2,11 +2,28 @@ import { FaArrowDown } from "react-icons/fa";
 import MyItemCard from "../../components/MyItemCard/MyItemCard";
 import { useLoaderData } from "react-router-dom";
 import { useState } from "react";
+import MyDynamicTitle from "../../../MyDynamicTitle";
 
 const MyArtsAndCrafts = () => {
-
+    MyDynamicTitle('My Items')
     const loadedItems = useLoaderData()
     const [items, setItems] = useState(loadedItems); 
+
+    const handleAll = () => {
+        setItems(loadedItems);
+    };
+
+    const handleYes = () => {
+
+        const filteredItems = loadedItems.filter(item => item.customization === 'Yes');
+        setItems(filteredItems);
+    };
+
+    const handleNo = () => {
+
+        const filteredItems = loadedItems.filter(item => item.customization === 'No');
+        setItems(filteredItems);
+    };
 
     return (
         <div>
@@ -16,9 +33,9 @@ const MyArtsAndCrafts = () => {
             <div className="dropdown">
                 <div tabIndex={0} role="button" className="btn m-1 bg-teal-200">Show <FaArrowDown></FaArrowDown></div>
                     <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-teal-50 rounded-box w-52">
-                        <li className="font-semibold"><a>All</a></li>
-                        <li className="font-semibold"><a>Customization: Yes</a></li>
-                        <li className="font-semibold"><a>Customization: No</a></li>
+                        <li onClick={handleAll} className="font-semibold"><a>All</a></li>
+                        <li onClick={handleYes} className="font-semibold"><a>Customization: Yes</a></li>
+                        <li onClick={handleNo} className="font-semibold"><a>Customization: No</a></li>
                     </ul>
                 </div>
             </div>

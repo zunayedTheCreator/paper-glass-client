@@ -1,8 +1,9 @@
 import { FaDollarSign, FaRegClock, FaStar, FaUser, FaEnvelope, FaHome } from "react-icons/fa";
 import { Link, useLoaderData } from "react-router-dom";
+import MyDynamicTitle from "../../../MyDynamicTitle";
 
 const ItemDetails = () => {
-
+    MyDynamicTitle('Item Details')
     const item = useLoaderData();
     const {item_name, subcategory, price, rating, process_time, description, customization, stock_state, user_name, user_email, photo, _id} = item;
 

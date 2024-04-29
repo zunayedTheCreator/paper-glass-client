@@ -1,8 +1,9 @@
 import { useLoaderData } from "react-router-dom";
 import Swal from 'sweetalert2'
+import MyDynamicTitle from "../../../MyDynamicTitle";
 
 const UpdateCraftItem = () => {
-
+    MyDynamicTitle('Update Craft Item')
     const item = useLoaderData();
     const {item_name, subcategory, price, rating, process_time, description, customization, stock_state, user_name, user_email, photo, _id} = item;
 

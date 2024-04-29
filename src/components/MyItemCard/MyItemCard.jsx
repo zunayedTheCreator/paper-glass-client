@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import Swal from 'sweetalert2'
 
 const MyItemCard = ({item, items, setItems}) => {
-
     const {item_name, subcategory, price, rating, process_time, description, customization, stock_state, user_name, user_email, photo, _id} = item;
 
     const handleDelete = _id => {

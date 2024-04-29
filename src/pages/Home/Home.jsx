@@ -3,9 +3,11 @@ import Banner from "../../components/Banner/Banner";
 import ItemsCard from "../../components/ItemsCard/ItemsCard";
 import MostValue from "../../components/MostValue/MostValue";
 import MostUnique from "../../components/MostUnique/MostUnique";
+import MyDynamicTitle from "../../../MyDynamicTitle";
+import ArtsCraftCategories from "../../components/ArtsCraftCategories/ArtsCraftCategories";
 
 const Home = () => {
-
+    MyDynamicTitle('Home')
     const items = useLoaderData();
 
     return (
@@ -20,6 +22,7 @@ const Home = () => {
                     }
                 </div>
             </div>
+            <ArtsCraftCategories></ArtsCraftCategories>
             <MostValue></MostValue>
             <MostUnique></MostUnique>
         </div>
