@@ -1,8 +1,9 @@
 import { FaArrowDown } from "react-icons/fa";
 import MyItemCard from "../../components/MyItemCard/MyItemCard";
 import { useLoaderData } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import MyDynamicTitle from "../../../MyDynamicTitle";
+import { HashLoader } from "react-spinners";
 
 const MyArtsAndCrafts = () => {
     MyDynamicTitle('My Items')
@@ -25,6 +26,16 @@ const MyArtsAndCrafts = () => {
         setItems(filteredItems);
     };
 
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const timeout = setTimeout(() => {
+        setLoading(false);
+        }, 2000);
+
+        return () => clearTimeout(timeout);
+    }, []);
+
     return (
         <div>
             <h2 className="text-3xl font-bold text-center">My Arts&Crafts List</h2>
@@ -39,12 +50,12 @@ const MyArtsAndCrafts = () => {
                     </ul>
                 </div>
             </div>
-            <div className="flex flex-col gap-5">
+            { loading ? (<HashLoader className="mx-auto my-20" color={'#E11D48'} loading={loading} size={50}></HashLoader>) : (<div className="flex flex-col gap-5">
                 {items.length === 0 ? <h1 className="text-4xl font-bold text-center text-red-600 mt-4">Please add some items</h1>: <></>}
                 {
                     items.map(item => <MyItemCard key={item._id} item={item} items={items} setItems={setItems}></MyItemCard>)
                 }
-            </div>
+            </div>)}
         </div>
     );
 };

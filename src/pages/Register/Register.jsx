@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import { ToastContainer, toast } from 'react-toastify';
   import 'react-toastify/dist/ReactToastify.css';
+import { Slide } from "react-awesome-reveal";
 
 const Register = () => {
     const [isToggled, setIsToggled] = useState(false);
@@ -53,20 +54,22 @@ const Register = () => {
            <div className='flex flex-col md:flex-row items-center justify-between'>
            <div className='md:w-2/3 mt-5 md:mt-0 mb-6 md:mb-0'>
                     <div>
-                        <form onSubmit={handleCreateUser} className="blurBg w-[340px] h-[450px] border-[#00000066] border-2 mx-auto rounded-3xl py-4 px-3 animate__animated animate__fadeInLeft">
-                            <h3 className="text-[#000000] text-4xl font-bold text-center">Register</h3>
-                            <div className="border-t-2 border-black mx-auto w-1/2 mt-2 mb-[20px]"></div>
-                            <input type="text" placeholder="Your Name" name="name" className="input-md w-full max-w-xs blurBg border-2 border-white text-white font-medium rounded-2xl placeholder-b mb-4" required/>
-                            <input type="email" placeholder="Your Email" name="email" className="input-md w-full max-w-xs blurBg border-2 border-white text-white font-medium rounded-2xl placeholder-b mb-4" required/>
-                            <input type="text" placeholder="Image Link" name="img" className="input-md w-full max-w-xs blurBg border-2 border-white text-white font-medium rounded-2xl placeholder-b mb-4" required/>
-                            <div className="border-white border-2 flex items-center rounded-2xl pr-2 mb-6">
-                                <input type={isToggled ? 'text' : 'password'} placeholder="Password" name="password" className="input-md w-full max-w-xs blurBg rounded-2xl text-white font-medium placeholder-b" required/>
-                                <h2>{isToggled ? <FaEyeSlash className="text-black" onClick={handleToggleClick}></FaEyeSlash> : <FaEye className="text-black" onClick={handleToggleClick}></FaEye>}</h2>
-                            </div>
-                            <div className="text-center">
-                                <button className="bg-cyan-200 btn px-16 font-bold border-none">Register</button>
-                            </div>
-                        </form>
+                        <Slide>
+                            <form onSubmit={handleCreateUser} className="blurBg w-[340px] h-[450px] border-[#00000066] border-2 mx-auto rounded-3xl py-4 px-3 animate__animated animate__fadeInLeft">
+                                <h3 className="text-[#000000] text-4xl font-bold text-center">Register</h3>
+                                <div className="border-t-2 border-black mx-auto w-1/2 mt-2 mb-[20px]"></div>
+                                <input type="text" placeholder="Your Name" name="name" className="input-md w-full max-w-xs blurBg border-2 border-white text-white font-medium rounded-2xl placeholder-b mb-4" required/>
+                                <input type="email" placeholder="Your Email" name="email" className="input-md w-full max-w-xs blurBg border-2 border-white text-white font-medium rounded-2xl placeholder-b mb-4" required/>
+                                <input type="text" placeholder="Image Link" name="img" className="input-md w-full max-w-xs blurBg border-2 border-white text-white font-medium rounded-2xl placeholder-b mb-4" required/>
+                                <div className="border-white border-2 flex items-center rounded-2xl pr-2 mb-6">
+                                    <input type={isToggled ? 'text' : 'password'} placeholder="Password" name="password" className="input-md w-full max-w-xs blurBg rounded-2xl text-white font-medium placeholder-b" required/>
+                                    <h2>{isToggled ? <FaEyeSlash className="text-black" onClick={handleToggleClick}></FaEyeSlash> : <FaEye className="text-black" onClick={handleToggleClick}></FaEye>}</h2>
+                                </div>
+                                <div className="text-center">
+                                    <button className="bg-cyan-200 btn px-16 font-bold border-none">Register</button>
+                                </div>
+                            </form>
+                        </Slide>
                     </div>
                 </div>
                 <div className='w-full md:w-1/3 h-[300px] md:h-[600px] rounded-b-3xl md:rounded-r-3xl bg-rose-400 flex flex-col justify-center'>

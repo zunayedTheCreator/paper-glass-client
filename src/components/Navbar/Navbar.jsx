@@ -4,6 +4,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import logo from '../../../public/images/logo.png'
+import { Tooltip } from "react-tooltip";
 
 const Navbar = () => {
 
@@ -20,28 +21,28 @@ const Navbar = () => {
     const navLinks = <>
         <NavLink to={'/'} className={({ isActive, isPending }) =>
                       isActive
-                        ? "rounded-xl bg-emerald-400 text-black"
+                        ? "rounded-xl bg-rose-600 text-black"
                         : isPending
                         ? "pending"
                         : ""
                     }><li className="font-bold"><a>Home</a></li></NavLink>
         <NavLink to={'/ArtsAndCrafts'} className={({ isActive, isPending }) =>
                       isActive
-                        ? "rounded-xl bg-emerald-400 text-black"
+                        ? "rounded-xl bg-rose-600 text-black"
                         : isPending
                         ? "pending"
                         : ""
                     }><li className="font-bold"><a>All Arts&Crafts</a></li></NavLink>
         { user1 || user2 ? <NavLink to={'/AddCraftItem'} className={({ isActive, isPending }) =>
                       isActive
-                        ? "rounded-xl bg-emerald-400 text-black"
+                        ? "rounded-xl bg-rose-600 text-black"
                         : isPending
                         ? "pending"
                         : ""
                     }><li className="font-bold"><a>Add Craft Item</a></li></NavLink> : <></>}
         { user1 || user2 ? <NavLink to={'/MyArtsAndCrafts'} className={({ isActive, isPending }) =>
                       isActive
-                        ? "rounded-xl bg-emerald-400 text-black"
+                        ? "rounded-xl bg-rose-600 text-black"
                         : isPending
                         ? "pending"
                         : ""
@@ -58,7 +59,7 @@ const Navbar = () => {
     }
 
     return (
-        <div className="navbar bg-base-100 mb-8 px-6">
+        <div className="navbar bg-base-100 mb-8 px-6 pt-2 border-b-4 rounded-b-xl drop-shadow-md border-rose-600">
             <div className="navbar-start">
                 <div className="dropdown">
                 <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -96,7 +97,7 @@ const Navbar = () => {
             <div className="navbar-end">
                 <div className="avatar">
                     <div className="w-11 rounded-full mr-3 ring ring-offset-2 ring-teal-400 ml-4">
-                        <img src={ user1 || user2 ? loggedPhoto || signedPhoto : no_user } alt={user1 || user2 ? loggedName || signedName : 'None'} />
+                        <img data-tooltip-id="my-tooltip" data-tooltip-content={loggedName || signedName} src={ user1 || user2 ? loggedPhoto || signedPhoto : no_user } alt={user1 || user2 ? loggedName || signedName : 'None'} />
                     </div>
                 </div>
                 { user1 || user2 ? 
@@ -119,6 +120,7 @@ const Navbar = () => {
                 </label>
             </div>
             <ToastContainer></ToastContainer>
+            <Tooltip id="my-tooltip" />
         </div>
     );
 };

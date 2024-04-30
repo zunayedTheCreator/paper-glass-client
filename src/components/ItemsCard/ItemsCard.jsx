@@ -1,3 +1,4 @@
+import { Fade } from "react-awesome-reveal";
 import { FaDollarSign } from "react-icons/fa";
 import { FaStar } from "react-icons/fa";
 import { FaRegClock } from "react-icons/fa";
@@ -8,7 +9,8 @@ const ItemsCard = ({item}) => {
     const {item_name, subcategory, price, rating, process_time, description, customization, stock_state, user_name, user_email, photo, _id} = item;
 
     return (
-        <div className="card md:card-side bg-base-100 w-[330px] md:w-[600px] md:h-[320px] shadow-xl rounded border text-black item mx-auto xl:mx-0">
+        <Fade>
+            <div className="card md:card-side bg-base-100 w-[330px] md:w-[600px] md:h-[320px] shadow-xl rounded border text-black item mx-auto xl:mx-0">
         <figure className="md:w-2/5 bg-black"><img src={photo} alt="Movie"/></figure>
         <div className="card-body gap-0 md:w-3/5 bg-orange-300">
             <div className="flex items-center justify-between">
@@ -25,6 +27,7 @@ const ItemsCard = ({item}) => {
             </div>
         </div>
         </div>
+        </Fade>
     );
 };
 

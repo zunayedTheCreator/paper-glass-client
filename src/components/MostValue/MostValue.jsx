@@ -10,7 +10,7 @@ const MostValue = () => {
             <div className="border-t-2 w-2/6 border-black mx-auto mb-8"></div>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
 
-                <div className="card w-96 h-[250px] bg-base-100 shadow-xl image-full mx-auto lg:mx-0">
+                <div className="card w-[330px] md:w-96 h-[250px] bg-base-100 shadow-xl image-full mx-auto lg:mx-0">
                     <figure><img src={img1} alt="Shoes" /></figure>
                     <div className="card-body">
                         <h2 className="card-title">The Burden King!</h2>
@@ -19,7 +19,7 @@ const MostValue = () => {
                         </div>
                     </div>
                 </div>
-                <div className="card w-96 h-[250px] bg-base-100 shadow-xl image-full mx-auto lg:mx-0">
+                <div className="card w-[330px] md:w-96 h-[250px] bg-base-100 shadow-xl image-full mx-auto lg:mx-0">
                     <figure><img src={img2} alt="Shoes" /></figure>
                     <div className="card-body">
                         <h2 className="card-title">Angelic Dairy</h2>
@@ -28,7 +28,7 @@ const MostValue = () => {
                         </div>
                     </div>
                 </div>
-                <div className="card w-96 h-[250px] bg-base-100 shadow-xl image-full mx-auto lg:mx-0">
+                <div className="card w-[330px] md:w-96 h-[250px] bg-base-100 shadow-xl image-full mx-auto lg:mx-0">
                     <figure><img src={img3} alt="Shoes" /></figure>
                     <div className="card-body">
                         <h2 className="card-title">Paper Garden</h2>
@@ -37,7 +37,7 @@ const MostValue = () => {
                         </div>
                     </div>
                 </div>
-                <div className="card w-96 h-[250px] bg-base-100 shadow-xl image-full mx-auto lg:mx-0">
+                <div className="card w-[330px] md:w-96 h-[250px] bg-base-100 shadow-xl image-full mx-auto lg:mx-0">
                     <figure><img src={img4} alt="Shoes" /></figure>
                     <div className="card-body">
                         <h2 className="card-title">Swan Bath</h2>
