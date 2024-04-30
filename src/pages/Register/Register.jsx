@@ -1,12 +1,14 @@
 import { useContext, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import { ToastContainer, toast } from 'react-toastify';
   import 'react-toastify/dist/ReactToastify.css';
 import { Slide } from "react-awesome-reveal";
+import MyDynamicTitle from "../../../MyDynamicTitle";
 
 const Register = () => {
+    MyDynamicTitle('Register')
     const [isToggled, setIsToggled] = useState(false);
 
     const {createUser} = useContext(AuthContext)
@@ -14,6 +16,8 @@ const Register = () => {
     const handleToggleClick = () => {
         setIsToggled(!isToggled);
     };
+
+    const navigate = useNavigate();
 
     const handleCreateUser = e =>{
         e.preventDefault();
@@ -24,29 +28,38 @@ const Register = () => {
         const email = form.email.value;
         const img = form.img.value;
         const password = form.password.value;
-        console.log(name, email, img, password);
-        createUser(email, password)
-        .then(result => {
-            console.log(result.user);
 
-            const user = {name, email, img, password};
-            fetch('http://localhost:5000/user', {
-                method: 'POST',
-                headers: {
-                    'content-type': 'application/json'
-                },
-                body: JSON.stringify(user)
+        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{6,}$/;
+        if (passwordRegex.test(password)) {
+
+            console.log(name, email, img, password);
+            createUser(email, password)
+            .then(result => {
+                console.log(result.user);
+
+                const user = {name, email, img, password};
+                fetch('http://localhost:5000/user', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(user)
+                })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.insertedId) {
+                        toast.success('Registration successful')
+                    }
+                })
             })
-            .then(res => res.json())
-            .then(data => {
-                if (data.insertedId) {
-                    toast.success('Registration successful')
-                }
+            .catch(error => {
+                console.error(error);
             })
-        })
-        .catch(error => {
-            console.error(error);
-        })
+            navigate('/login')
+        }
+        else{
+            toast.error('Password must have at least 1 upper and lower case and also must be longer than 6 characters');
+        }
     }
 
     return (

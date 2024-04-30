@@ -2,9 +2,10 @@ import { useLoaderData } from "react-router-dom";
 import ItemsCard from "../../components/ItemsCard/ItemsCard";
 import { HashLoader } from "react-spinners";
 import { useEffect, useState } from "react";
+import MyDynamicTitle from "../../../MyDynamicTitle";
 
 const ArtsAndCrafts = () => {
-    
+    MyDynamicTitle('Arts and Crafts')
     const allItems = useLoaderData();
 
     const [loading, setLoading] = useState(true);

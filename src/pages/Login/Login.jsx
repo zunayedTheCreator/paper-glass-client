@@ -1,13 +1,17 @@
 import { useContext, useState } from "react";
 import { FaEye, FaEyeSlash, FaGithub, FaGoogle } from "react-icons/fa";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Slide } from "react-awesome-reveal";
+import MyDynamicTitle from "../../../MyDynamicTitle";
 
 const Login = () => {
+    MyDynamicTitle('Login')
+
+    const navigate = useNavigate();
 
     const [isToggled, setIsToggled] = useState(false);
 
@@ -36,9 +40,9 @@ const Login = () => {
                 const loggedUserExist = localStorage.getItem('loggedUser')
 
                 if (!signedUserExist && !loggedUserExist) {
+                    toast.success('Successfully Logged In')
                     const signedUser = JSON.stringify(data[0])
                     localStorage.setItem('signedUser', signedUser)
-                    toast.success('Successfully Logged In')
                     setTimeout(() => { 
                         location.reload()
                     }, 2000);
@@ -47,6 +51,7 @@ const Login = () => {
                     toast.error('Already Logged In')
                 }
             })
+            navigate('/')
         })
         .catch((error) => {
             console.error(error);
@@ -65,9 +70,9 @@ const Login = () => {
                 const signedUserExist = localStorage.getItem('signedUser')
 
                 if (!loggedUserExist && !signedUserExist) {
+                    toast.success('Successfully Logged In')
                     const loggedUser = JSON.stringify(result.user)
                     localStorage.setItem('loggedUser', loggedUser)
-                    toast.success('Successfully Logged In')
                     setTimeout(() => { 
                         location.reload()
                     }, 2000);
@@ -76,6 +81,7 @@ const Login = () => {
                     toast.error('Already Logged In')
                 }
             }
+            navigate('/')
         })
         .catch((error) => {
             console.error(error);
@@ -94,9 +100,9 @@ const Login = () => {
                 const signedUserExist = localStorage.getItem('signedUser')
 
                 if (!loggedUserExist && !signedUserExist) {
+                    toast.success('Successfully Logged In')
                     const loggedUser = JSON.stringify(result.user)
                     localStorage.setItem('loggedUser', loggedUser)
-                    toast.success('Successfully Logged In')
                     setTimeout(() => { 
                         location.reload()
                     }, 2000);
@@ -104,6 +110,7 @@ const Login = () => {
                 else{
                     toast.error('Already Logged In')
                 }
+                navigate('/')
             }
         })
         .catch((error) => {

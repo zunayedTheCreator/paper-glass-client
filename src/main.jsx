@@ -12,13 +12,13 @@ import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
 import AddCraftItem from './pages/AddCraftItem/AddCraftItem';
 import ItemDetails from './pages/ItemDetails/ItemDetails';
-import Error from './pages/Home/Error/Error';
 import AuthProvider from './providers/AuthProvider';
 import PrivateRoutes from './routes/PrivateRoutes';
 import MyArtsAndCrafts from './pages/MyArtsAndCrafts/MyArtsAndCrafts';
 import UpdateCraftItem from './pages/UpdateCraftItem/UpdateCraftItem';
 import SubcategoryItem from './pages/SubcategoryItems/SubcategoryItem';
 import Profile from './pages/Profile/Profile';
+import Error from './pages/Error/Error';
 
 const loggedUser = localStorage.getItem('loggedUser');
 const user1 = JSON.parse(loggedUser)

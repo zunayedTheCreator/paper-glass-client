@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom';
-import error from '../../../../public/images/error.png'
+import error from '../../../public/images/error.png'
+import MyDynamicTitle from '../../../MyDynamicTitle';
 
 const Error = () => {
+    MyDynamicTitle('Error')
     return (
         <div >
             <img className='mx-auto mb-3' src={error} alt="" />

@@ -2,9 +2,10 @@ import { useLoaderData } from "react-router-dom";
 import CategoryItemsCard from "../../components/CategoryItemsCard/CategoryItemsCard";
 import { HashLoader } from "react-spinners";
 import { useEffect, useState } from "react";
+import MyDynamicTitle from "../../../MyDynamicTitle";
 
 const SubcategoryItem = () => {
-
+    MyDynamicTitle('Subcategory')
     const items = useLoaderData();
 
     const [loading, setLoading] = useState(true);

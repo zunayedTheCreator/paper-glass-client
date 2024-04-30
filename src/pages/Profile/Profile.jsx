@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
 import person from '../../../public/images/person.gif'
 import { ClimbingBoxLoader } from 'react-spinners';
+import MyDynamicTitle from '../../../MyDynamicTitle';
 
 const Profile = () => {
-
+    MyDynamicTitle('Profile')
     const loggedUser = localStorage.getItem('loggedUser')
     const user1 = JSON.parse(loggedUser);
     const loggedName = user1?.providerData[0].displayName
