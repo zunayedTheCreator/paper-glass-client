@@ -97,7 +97,9 @@ const Navbar = () => {
             <div className="navbar-end">
                 <div className="avatar">
                     <div className="w-11 rounded-full mr-3 ring ring-offset-2 ring-teal-400 ml-4">
-                        <img data-tooltip-id="my-tooltip" data-tooltip-content={loggedName || signedName} src={ user1 || user2 ? loggedPhoto || signedPhoto : no_user } alt={user1 || user2 ? loggedName || signedName : 'None'} />
+                        <Link to={'/profile'}>
+                            <img data-tooltip-id="my-tooltip" data-tooltip-content={loggedName || signedName} src={ user1 || user2 ? loggedPhoto || signedPhoto : no_user } alt={user1 || user2 ? loggedName || signedName : 'None'} />
+                        </Link>
                     </div>
                 </div>
                 { user1 || user2 ? 

@@ -18,6 +18,7 @@ import PrivateRoutes from './routes/PrivateRoutes';
 import MyArtsAndCrafts from './pages/MyArtsAndCrafts/MyArtsAndCrafts';
 import UpdateCraftItem from './pages/UpdateCraftItem/UpdateCraftItem';
 import SubcategoryItem from './pages/SubcategoryItems/SubcategoryItem';
+import Profile from './pages/Profile/Profile';
 
 const loggedUser = localStorage.getItem('loggedUser');
 const user1 = JSON.parse(loggedUser)
@@ -74,6 +75,10 @@ const router = createBrowserRouter([
         element: <PrivateRoutes><SubcategoryItem></SubcategoryItem></PrivateRoutes>,
         loader: ({params}) => fetch(`http://localhost:5000/item/${params.subcategory}`)
       },
+      {
+        path: '/profile',
+        element: <PrivateRoutes><Profile></Profile></PrivateRoutes>
+      }
     ]
   },
 ]);

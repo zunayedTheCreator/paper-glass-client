@@ -15,7 +15,9 @@ const ItemDetails = () => {
                     <div className="bg-black rounded-lg"><img src={photo} className="w-[400px] h-[300px] object-cover rounded-lg shadow-2xl" /></div>
                     <div className="justify-start lg:w-2/3">
                         <div className="flex items-center mb-4 justify-between">
-                            <button className="font-bold border-2 border-b-black border-r-black border-l-teal-400 border-t-teal-400 px-2 py-1 rounded w-fit bg-[#ffffff66] hover:bg-[#ffffff55] hover:border-b-teal-400 hover:border-r-teal-400 hover:border-l-black hover:border-t-black duration-200">{subcategory}</button>
+                            <Link to={`/Subcategory/${subcategory}`}>
+                                <button className="font-bold border-2 border-b-black border-r-black border-l-teal-400 border-t-teal-400 px-2 py-1 rounded w-fit bg-[#ffffff66] hover:bg-[#ffffff55] hover:border-b-teal-400 hover:border-r-teal-400 hover:border-l-black hover:border-t-black duration-200">{subcategory}</button>
+                            </Link>
                             <Link to={'/'}><FaHome className="text-2xl"></FaHome></Link>
                         </div>
                         <h1 className="text-5xl font-bold mb-1">{item_name}</h1>
