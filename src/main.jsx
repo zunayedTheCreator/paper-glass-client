@@ -36,12 +36,12 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Home></Home>,
-        loader: () => fetch('http://localhost:5000/item')
+        loader: () => fetch('https://paper-glass-server.vercel.app/item')
       },
       {
         path: '/ArtsAndCrafts',
         element: <ArtsAndCrafts></ArtsAndCrafts>,
-        loader: () => fetch('http://localhost:5000/item')
+        loader: () => fetch('https://paper-glass-server.vercel.app/item')
       },
       {
         path: '/register',
@@ -58,22 +58,22 @@ const router = createBrowserRouter([
       {
         path: '/item/:id',
         element: <PrivateRoutes><ItemDetails></ItemDetails></PrivateRoutes>,
-        loader: ({params}) => fetch(`http://localhost:5000/item/${params.id}`)
+        loader: ({params}) => fetch(`https://paper-glass-server.vercel.app/item/${params.id}`)
       },
       {
         path: '/MyArtsAndCrafts',
         element: <PrivateRoutes><MyArtsAndCrafts></MyArtsAndCrafts></PrivateRoutes>,
-        loader: () => fetch(`http://localhost:5000/item/${email1||email2}`)
+        loader: () => fetch(`https://paper-glass-server.vercel.app/item/${email1||email2}`)
       },
       {
         path: '/UpdateCraftItem/:id',
         element: <PrivateRoutes><UpdateCraftItem></UpdateCraftItem></PrivateRoutes>,
-        loader: ({params}) => fetch(`http://localhost:5000/item/${params.id}`)
+        loader: ({params}) => fetch(`https://paper-glass-server.vercel.app/item/${params.id}`)
       },
       {
         path: '/Subcategory/:subcategory',
         element: <PrivateRoutes><SubcategoryItem></SubcategoryItem></PrivateRoutes>,
-        loader: ({params}) => fetch(`http://localhost:5000/item/${params.subcategory}`)
+        loader: ({params}) => fetch(`https://paper-glass-server.vercel.app/item/${params.subcategory}`)
       },
       {
         path: '/profile',

@@ -38,8 +38,9 @@ const Register = () => {
                 console.log(result.user);
 
                 const user = {name, email, img, password};
-                fetch('http://localhost:5000/user', {
+                fetch('https://paper-glass-server.vercel.app/user', {
                     method: 'POST',
+                    mode: 'no-cors',
                     headers: {
                         'content-type': 'application/json'
                     },

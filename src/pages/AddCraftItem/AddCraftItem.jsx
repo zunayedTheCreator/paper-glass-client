@@ -35,8 +35,9 @@ const AddCraftItem = () => {
         console.log(newItem);
 
         // send item to server
-        fetch('http://localhost:5000/item', {
+        fetch('https://paper-glass-server.vercel.app/item', {
             method: 'POST',
+            mode: 'no-cors',
             headers: {
                 'content-type': 'application/json'
             },

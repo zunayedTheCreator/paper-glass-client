@@ -6,12 +6,11 @@ const ArtsCraftCategories = () => {
     
     const [categories, setCategories] = useState([])
 
-    fetch('http://localhost:5000/category')
-    .then(res => res.json())
-    .then(data => {
-        setCategories(data)
-        return;
-    })
+    useEffect(() => {
+        fetch('https://paper-glass-server.vercel.app/category')
+        .then(res => res.json())
+        .then(data => setCategories(data))
+    }, [])
 
     const [loading, setLoading] = useState(true);
 

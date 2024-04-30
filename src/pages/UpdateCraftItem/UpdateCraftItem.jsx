@@ -31,8 +31,9 @@ const UpdateCraftItem = () => {
         console.log(updateItem);
 
         // send item to server
-        fetch(`http://localhost:5000/item/${_id}`, {
+        fetch(`https://paper-glass-server.vercel.app/item/${_id}`, {
             method: 'PUT',
+            mode: 'no-cors',
             headers: {
                 'content-type': 'application/json'
             },

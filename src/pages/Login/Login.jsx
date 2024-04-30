@@ -32,7 +32,9 @@ const Login = () => {
         .then((result) => {
             console.log(result.user);
 
-            fetch(`http://localhost:5000/user/${email}`)
+            fetch(`https://paper-glass-server.vercel.app/user/${email}`, {
+                mode: 'no-cors'
+            })
             .then(res => res.json())
             .then(data => {
                 console.log(data[0]);

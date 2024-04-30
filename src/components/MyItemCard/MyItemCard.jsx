@@ -18,8 +18,9 @@ const MyItemCard = ({item, items, setItems}) => {
             confirmButtonText: "Yes, delete it!"
           }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/item/${_id}`, {
-                    method: 'DELETE'
+                fetch(`https://paper-glass-server.vercel.app/item/${_id}`, {
+                    method: 'DELETE',
+                    mode: 'no-cors'
                 })
                 .then(res => res.json())
                 .then(data => {
