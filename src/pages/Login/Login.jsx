@@ -130,9 +130,9 @@ const Login = () => {
                             <form onSubmit={handleSignIn} className="blurBg w-[340px] h-[450px] border-[#00000066] border-2 mx-auto rounded-3xl py-4 px-3 animate__animated animate__fadeInLeft">
                                 <h3 className="text-black text-4xl font-bold text-center">Login</h3>
                                 <div className="border-t-2 border-black mx-auto w-1/2 mt-2 mb-[40px]"></div>
-                                <input type="email" placeholder="Your Email" name="email" className="input-md w-full max-w-xs blurBg border-2 border-white text-white font-medium rounded-2xl placeholder-b mb-6" required/>
+                                <input type="email" placeholder="Your Email" name="email" className="input-md w-full max-w-xs blurBg border-2 border-white text-black font-medium rounded-2xl placeholder-b mb-6" required/>
                                 <div className="border-white border-2 flex items-center rounded-2xl pr-2 mb-6">
-                                    <input type={isToggled ? 'text' : 'password'} placeholder="Password" name="password" className="input-md w-full max-w-xs blurBg rounded-2xl text-white font-medium placeholder-b" required/>
+                                    <input type={isToggled ? 'text' : 'password'} placeholder="Password" name="password" className="input-md w-full max-w-xs blurBg rounded-2xl text-black font-medium placeholder-b" required/>
                                     <h2>{isToggled ? <FaEyeSlash className="text-black" onClick={handleToggleClick}></FaEyeSlash> : <FaEye onClick={handleToggleClick} className="text-black"></FaEye>}</h2>
                                 </div>
                                 <div className="border-t-2 border-white mx-auto w-2/3 mt-2 mb-4"></div>
