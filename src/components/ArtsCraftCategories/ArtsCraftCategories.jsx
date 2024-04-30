@@ -8,7 +8,10 @@ const ArtsCraftCategories = () => {
 
     fetch('http://localhost:5000/category')
     .then(res => res.json())
-    .then(data => setCategories(data))
+    .then(data => {
+        setCategories(data)
+        return;
+    })
 
     const [loading, setLoading] = useState(true);
 

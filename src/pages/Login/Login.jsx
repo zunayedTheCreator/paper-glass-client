@@ -32,12 +32,20 @@ const Login = () => {
             .then(res => res.json())
             .then(data => {
                 console.log(data[0]);
-                const signedUser = JSON.stringify(data[0])
-                localStorage.setItem('signedUser', signedUser)
-                toast.success('Successfully Logged In')
-                setTimeout(() => { 
-                    location.reload()
-                }, 2000);
+                const signedUserExist = localStorage.getItem('signedUser')
+                const loggedUserExist = localStorage.getItem('loggedUser')
+
+                if (!signedUserExist && !loggedUserExist) {
+                    const signedUser = JSON.stringify(data[0])
+                    localStorage.setItem('signedUser', signedUser)
+                    toast.success('Successfully Logged In')
+                    setTimeout(() => { 
+                        location.reload()
+                    }, 2000);
+                }
+                else{
+                    toast.error('Already Logged In')
+                }
             })
         })
         .catch((error) => {
@@ -53,12 +61,20 @@ const Login = () => {
         googleSignIn(googleProvider)
         .then((result) => {
             if (result.user) {
-                const loggedUser = JSON.stringify(result.user)
-                localStorage.setItem('loggedUser', loggedUser)
-                toast.success('Successfully Logged In')
-                setTimeout(() => { 
-                    location.reload()
-                }, 2000);
+                const loggedUserExist = localStorage.getItem('loggedUser')
+                const signedUserExist = localStorage.getItem('signedUser')
+
+                if (!loggedUserExist && !signedUserExist) {
+                    const loggedUser = JSON.stringify(result.user)
+                    localStorage.setItem('loggedUser', loggedUser)
+                    toast.success('Successfully Logged In')
+                    setTimeout(() => { 
+                        location.reload()
+                    }, 2000);
+                }
+                else{
+                    toast.error('Already Logged In')
+                }
             }
         })
         .catch((error) => {
@@ -74,12 +90,20 @@ const Login = () => {
         gitSignIn(gitProvider)
         .then((result) => {
             if (result.user) {
-                const loggedUser = JSON.stringify(result.user)
-                localStorage.setItem('loggedUser', loggedUser)
-                toast.success('Successfully Logged In')
-                setTimeout(() => { 
-                    location.reload()
-                }, 2000);
+                const loggedUserExist = localStorage.getItem('loggedUser')
+                const signedUserExist = localStorage.getItem('signedUser')
+
+                if (!loggedUserExist && !signedUserExist) {
+                    const loggedUser = JSON.stringify(result.user)
+                    localStorage.setItem('loggedUser', loggedUser)
+                    toast.success('Successfully Logged In')
+                    setTimeout(() => { 
+                        location.reload()
+                    }, 2000);
+                }
+                else{
+                    toast.error('Already Logged In')
+                }
             }
         })
         .catch((error) => {

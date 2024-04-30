@@ -1,5 +1,5 @@
 import { Slide } from "react-awesome-reveal";
-import { FaDollarSign, FaStar, FaPen, FaRegTrashAlt } from "react-icons/fa";
+import { FaDollarSign, FaStar, FaPen, FaRegTrashAlt, FaEye } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import Swal from 'sweetalert2'
 
@@ -49,6 +49,7 @@ const MyItemCard = ({item, items, setItems}) => {
                                 <button className="font-bold border-2 border-b-black border-r-black border-l-teal-400 border-t-teal-400 px-2 py-1 rounded w-fit bg-[#ffffff66] hover:bg-[#ffffff55] hover:border-b-teal-400 hover:border-r-teal-400 hover:border-l-black hover:border-t-black duration-200">{subcategory}</button>
                             </Link>
                             <div className="flex items-center gap-2">
+                                <Link to={`/item/${_id}`}><FaEye className="text-4xl bg-blue-400 p-2 rounded-md hover:bg-blue-300 duration-200"></FaEye></Link>
                                 <Link to={`/UpdateCraftItem/${_id}`}><FaPen className="text-4xl bg-green-400 p-2 rounded-md hover:bg-green-300 duration-200"></FaPen></Link>
                                 <FaRegTrashAlt onClick={() => handleDelete(_id)} className="text-4xl bg-red-500 p-2 rounded-md hover:bg-red-400 duration-200 cursor-pointer"></FaRegTrashAlt>
                             </div>

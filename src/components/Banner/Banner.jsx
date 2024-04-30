@@ -8,8 +8,8 @@ const Banner = () => {
     return (
         <Fade>
             <div className="carousel w-full">
-                <div id="slide1" className="carousel-item relative w-full h-[600px]">
-                    <img className="bg-cover mx-auto lg:w-full xl:w-[1300px] object-cover h-[600px] rounded-lg" src={banner1} alt="banner" />
+                <div id="slide1" className="carousel-item w-full h-[600px]">
+                    <img className="bg-cover mx-auto lg:w-full xl:w-[1300px] object-cover h-[600px] rounded-lg -z-[100]" src={banner1} alt="banner" />
                     <h2 className="text-[30px] md:text-[70px] xl:text-[100px] platypi font-bold absolute text-white bg-[#00000066] rounded-lg px-3 left-0 right-0 mx-auto w-fit mt-[180px] text-center">Glass Dying & Staining</h2>
                     <div className="lg:w-full xl:w-[1300px] px-6 mx-auto absolute flex justify-between transform -translate-y-1/2 left-0 right-0 top-[470px]">
                     <a href="#slide4" className="btn btn-circle">❮</a> 
